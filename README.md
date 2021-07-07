@@ -1,26 +1,17 @@
-# <Plugin Name>
+# Slack Notifier
 
-:bulb: Plugin short description: what it does
+This plugin will send a message to a specified Slack channel each time a short link has been added to the database.
 
-Requires [YOURLS](https://yourls.org) `<here: min-version if applicable>` and above.
+Requires [YOURLS](https://yourls.org) `1.8.1` and above.
 
 ## Usage
 
-:bulb: This is a great place for showing a few usage examples!
-
-:camera: If applicable, a screenshot of the admin interface or anything relevant is super helpful
+TODO
 
 ## Installation
 
-:bulb: This is a great place for showing how to install the package. The common way is as below:
-
-1. In `/user/plugins`, create a new folder named `<here: your plugin folder name>`.
-2. Drop these files in that directory.
-3. Go to the Plugins administration page (eg. `http://sho.rt/admin/plugins.php`) and activate the plugin.
-4. Have fun!
+TODO
 
 ## License
-
-:bulb: The license might be updated with your terms.
 
 This package is licensed under the [MIT License](LICENSE).
