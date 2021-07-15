@@ -43,7 +43,7 @@ function jfix_notify_slack( $args ) {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": ":loudspeaker: Somebody just registered a short URL. The keyword is *$keyword* and the URL $url. Below are some more details:"
+                    "text": "📢 Somebody just registered a short URL. The keyword is *$keyword* and the URL $url. Below are some more details:"
                 }
             },
             {
