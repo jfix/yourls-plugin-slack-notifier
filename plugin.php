@@ -3,7 +3,7 @@
 Plugin Name: Slack Notifier
 Plugin URI: https://github.com/jfix/yourls-plugin-slack-notifier
 Description: Get a Slack notification each time someone registers a URL
-Version: 1.0
+Version: 1.0.1
 Author: Jakob Fix
 Author URI: https://github.com/jfix
 */
@@ -21,11 +21,13 @@ function jfix_notify_slack( $args ) {
     $url = $args[0];
     $keyword = $args[1];
     $shortURL = YOURLS_SITE . "/" . $keyword;
+    $shortSite = substr(YOURLS_SITE, strpos(YOURLS_SITE, "://") + 3);
+
     // no guarantee the page title is provided
     $title = empty($args[2]) ? $shortURL : $args[2];
-    $ip = $techInfo['url']['ip'];
+    $ip = empty($techInfo['url']['ip']) ? "unknown" : $techInfo['url']['ip'];
     // timestamp as required by Slack
-    $date = strtotime($techInfo['url']['date']);
+    $date = empty($techInfo['url']['date']) ? time() : strtotime($techInfo['url']['date']);
     // fallback date time string
     $formattedDate = date("j F Y, G:i:s", $date);
 
@@ -43,7 +45,7 @@ function jfix_notify_slack( $args ) {
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "📢 Somebody just registered a short URL. The keyword is *$keyword* and the URL $url. Below are some more details:"
+                    "text": "📢 Somebody just registered a short URL on $shortSite. The keyword is *$keyword* and the original URL $url. Below are some more details:"
                 }
             },
             {
@@ -71,7 +73,7 @@ function jfix_notify_slack( $args ) {
                     },
                     {
                         "type": "mrkdwn",
-                        "text": "📈 *Statistics*: <$shortURL+|oe.cd/$keyword+>"
+                        "text": "📈 *Statistics*: <$shortURL+|$shortSite/$keyword+>"
                     },
                 ]
             }
